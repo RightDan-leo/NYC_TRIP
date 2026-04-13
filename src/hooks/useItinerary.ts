@@ -2,9 +2,19 @@ import { useState, useCallback } from 'react';
 import { initialItinerary, type ItineraryItem } from '../data/itineraryData';
 
 const STORAGE_KEY = 'nyc_itinerary';
+const VERSION_KEY = 'nyc_itinerary_version';
+// Bump this whenever the itinerary data changes significantly
+const CURRENT_VERSION = '2026-04-15-v2';
 
 function loadFromStorage(): ItineraryItem[] {
   try {
+    const savedVersion = localStorage.getItem(VERSION_KEY);
+    // If version mismatch, discard old cache
+    if (savedVersion !== CURRENT_VERSION) {
+      localStorage.removeItem(STORAGE_KEY);
+      localStorage.setItem(VERSION_KEY, CURRENT_VERSION);
+      return [...initialItinerary];
+    }
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
       return JSON.parse(raw) as ItineraryItem[];
@@ -38,6 +48,7 @@ export function useItinerary() {
 
   const resetItinerary = useCallback(() => {
     localStorage.removeItem(STORAGE_KEY);
+    localStorage.setItem(VERSION_KEY, CURRENT_VERSION);
     const fresh = [...initialItinerary];
     setItems(fresh);
   }, []);
