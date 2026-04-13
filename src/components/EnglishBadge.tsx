@@ -9,7 +9,7 @@ const config: Record<EnglishLevel, { icon: string; label: string; color: string 
 export default function EnglishBadge({ level }: { level: EnglishLevel }) {
   const c = config[level];
   return (
-    <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold border ${c.color}`}>
+    <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold border ${c.color}`}>
       <span>{c.icon}</span>
       <span>{c.label}</span>
     </span>

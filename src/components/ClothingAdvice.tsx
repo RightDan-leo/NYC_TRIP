@@ -6,10 +6,10 @@ export default function ClothingAdvice() {
   const maxHigh = Math.max(...weatherData.map(d => d.high));
 
   return (
-    <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-5 border border-slate-100">
-      <h3 className="text-base font-bold text-slate-800 mb-3">👔 穿衣建议</h3>
+    <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-4 md:p-5 border border-slate-100">
+      <h3 className="text-base md:text-lg font-bold text-slate-800 mb-3">👔 穿衣建议</h3>
 
-      <div className="space-y-2 text-xs text-slate-600">
+      <div className="space-y-2.5 text-sm md:text-base text-slate-600">
         <div className="flex items-start gap-2">
           <span>🌡️</span>
           <span>气温范围：<strong className="text-blue-600">{minLow}°C</strong> – <strong className="text-red-500">{maxHigh}°C</strong>，日间炎热夜间骤冷</span>
@@ -32,8 +32,8 @@ export default function ClothingAdvice() {
         </div>
       </div>
 
-      <h3 className="text-base font-bold text-amber-800 mt-5 mb-3">⚠️ 安全提醒</h3>
-      <div className="space-y-2 text-xs text-slate-600">
+      <h3 className="text-base md:text-lg font-bold text-amber-800 mt-5 mb-3">⚠️ 安全提醒</h3>
+      <div className="space-y-2.5 text-sm md:text-base text-slate-600">
         <div className="flex items-start gap-2">
           <span>🛡️</span>
           <span>时代广场：拒绝任何强行合影或递CD（骗局）</span>

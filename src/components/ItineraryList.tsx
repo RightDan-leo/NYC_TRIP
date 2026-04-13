@@ -10,13 +10,13 @@ interface ItineraryListProps {
 }
 
 export default function ItineraryList({ items, onUpdate, onReset }: ItineraryListProps) {
-  // Group items by date prefix (e.g. "04/14")
+  // Group items by date prefix (e.g. "04/15")
   const groupedDays = useMemo(() => {
     const groups: { dateKey: string; items: { item: ItineraryItem; globalIndex: number }[] }[] = [];
     let currentKey = '';
 
     items.forEach((item, index) => {
-      const key = item.date.slice(0, 5); // "04/14"
+      const key = item.date.slice(0, 5); // "04/15"
       if (key !== currentKey) {
         currentKey = key;
         groups.push({ dateKey: key, items: [] });
@@ -31,19 +31,19 @@ export default function ItineraryList({ items, onUpdate, onReset }: ItineraryLis
     <div>
       {/* Tabs */}
       <div className="flex border-b border-slate-200 mb-4">
-        <button className="px-4 py-2 text-sm font-semibold text-blue-600 border-b-2 border-blue-600">
+        <button className="px-4 py-2 text-sm md:text-base font-semibold text-blue-600 border-b-2 border-blue-600">
           行程计划表
         </button>
-        <button className="px-4 py-2 text-sm text-slate-400">
+        <button className="px-4 py-2 text-sm md:text-base text-slate-400">
           推荐餐厅
         </button>
       </div>
 
       {/* Edit hint + Reset */}
       <div className="flex justify-between items-center mb-4 px-1">
-        <span className="text-xs text-slate-400">直接点击下方文字即可编辑行程</span>
+        <span className="text-xs md:text-sm text-slate-400">直接点击下方文字即可编辑行程</span>
         <button
-          className="text-xs text-red-500 hover:text-red-700 underline"
+          className="text-xs md:text-sm text-red-500 hover:text-red-700 underline"
           onClick={() => { if (confirm('确定要重置为初始行程？')) onReset(); }}
         >
           重置为初始行程

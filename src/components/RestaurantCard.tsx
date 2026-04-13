@@ -12,15 +12,15 @@ export default function RestaurantCard({ restaurant }: { restaurant: Restaurant 
       onClick={() => setExpanded(!expanded)}
     >
       {/* Header */}
-      <div className="flex items-center gap-3 px-4 py-3">
-        <span className="text-lg">🍽️</span>
+      <div className="flex items-center gap-3 px-3 md:px-4 py-3">
+        <span className="text-lg md:text-xl">🍽️</span>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="font-semibold text-sm text-orange-900">{restaurant.name}</span>
-            <span className="text-[10px] px-1.5 py-0.5 rounded bg-orange-100 text-orange-600 border border-orange-200">{restaurant.cuisine}</span>
-            {spiceIcons && <span className="text-xs">{spiceIcons}</span>}
+            <span className="font-semibold text-sm md:text-base text-orange-900">{restaurant.name}</span>
+            <span className="text-xs px-1.5 py-0.5 rounded bg-orange-100 text-orange-600 border border-orange-200">{restaurant.cuisine}</span>
+            {spiceIcons && <span className="text-xs md:text-sm">{spiceIcons}</span>}
           </div>
-          <div className="flex items-center gap-2 mt-0.5 text-[10px] text-slate-500">
+          <div className="flex items-center gap-2 mt-0.5 text-xs md:text-sm text-slate-500">
             <span>💰 {restaurant.priceRange}/人</span>
             <span>📍 {restaurant.address}</span>
           </div>
@@ -28,21 +28,21 @@ export default function RestaurantCard({ restaurant }: { restaurant: Restaurant 
         <div className="flex flex-col items-end gap-1 shrink-0">
           <EnglishBadge level={restaurant.englishLevel} />
           <div className="flex gap-1">
-            {restaurant.chineseMenu && <span className="text-[9px] px-1 py-0.5 rounded bg-green-50 text-green-700 border border-green-200">中文菜单</span>}
-            {restaurant.chineseService && <span className="text-[9px] px-1 py-0.5 rounded bg-green-50 text-green-700 border border-green-200">中文服务</span>}
+            {restaurant.chineseMenu && <span className="text-xs px-1.5 py-0.5 rounded bg-green-50 text-green-700 border border-green-200">中文菜单</span>}
+            {restaurant.chineseService && <span className="text-xs px-1.5 py-0.5 rounded bg-green-50 text-green-700 border border-green-200">中文服务</span>}
           </div>
         </div>
       </div>
 
       {/* Expandable */}
       {expanded && (
-        <div className="px-4 pb-4 border-t border-orange-50">
-          <p className="text-xs text-slate-600 leading-relaxed mt-3">{restaurant.description}</p>
+        <div className="px-3 md:px-4 pb-4 border-t border-orange-50">
+          <p className="text-sm md:text-base text-slate-600 leading-relaxed mt-3">{restaurant.description}</p>
           {restaurant.recommended.length > 0 && (
             <div className="mt-2 flex flex-wrap gap-1.5">
-              <span className="text-[11px] text-slate-500">推荐：</span>
+              <span className="text-xs md:text-sm text-slate-500">推荐：</span>
               {restaurant.recommended.map((item, i) => (
-                <span key={i} className="text-[10px] px-1.5 py-0.5 rounded-full bg-orange-50 text-orange-700 border border-orange-200">{item}</span>
+                <span key={i} className="text-xs md:text-sm px-2 py-0.5 rounded-full bg-orange-50 text-orange-700 border border-orange-200">{item}</span>
               ))}
             </div>
           )}

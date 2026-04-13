@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { initialItinerary, type ItineraryItem } from '../data/itineraryData';
 
 const STORAGE_KEY = 'nyc_itinerary';
@@ -27,6 +27,10 @@ function loadFromStorage(): ItineraryItem[] {
 
 export function useItinerary() {
   const [items, setItems] = useState<ItineraryItem[]>(loadFromStorage);
+  // Track whether there are unsaved edits
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+  // Keep a ref to the saved version so we can revert on refresh
+  const savedSnapshot = useRef<ItineraryItem[]>(loadFromStorage());
 
   const updateItem = useCallback(
     (index: number, field: keyof ItineraryItem, value: string) => {
@@ -34,15 +38,18 @@ export function useItinerary() {
         const next = prev.map((item, i) =>
           i === index ? { ...item, [field]: value } : item
         );
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+        // Only update React state — do NOT write to localStorage
         return next;
       });
+      setHasUnsavedChanges(true);
     },
     []
   );
 
   const saveItinerary = useCallback(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+    savedSnapshot.current = [...items];
+    setHasUnsavedChanges(false);
     alert('行程已成功保存！');
   }, [items]);
 
@@ -51,7 +58,9 @@ export function useItinerary() {
     localStorage.setItem(VERSION_KEY, CURRENT_VERSION);
     const fresh = [...initialItinerary];
     setItems(fresh);
+    savedSnapshot.current = fresh;
+    setHasUnsavedChanges(false);
   }, []);
 
-  return { items, updateItem, saveItinerary, resetItinerary };
+  return { items, updateItem, saveItinerary, resetItinerary, hasUnsavedChanges };
 }

@@ -29,26 +29,26 @@ export default function ItineraryCard({ item, index, onUpdate }: ItineraryCardPr
     : 'bg-white/80 border-slate-100 hover:bg-white';
 
   const dateClass = isWork
-    ? 'text-xs font-bold text-red-600 editable'
-    : 'text-xs font-bold text-blue-600 editable';
+    ? 'text-sm md:text-base font-bold text-red-600 editable'
+    : 'text-sm md:text-base font-bold text-blue-600 editable';
 
   const eventClass = isWork
-    ? 'font-bold text-red-800 editable'
-    : 'font-bold text-slate-800 editable';
+    ? 'text-sm md:text-base font-bold text-red-800 editable'
+    : 'text-sm md:text-base font-bold text-slate-800 editable';
 
   const noteClass = isWork
-    ? 'md:w-44 italic text-[11px] text-red-400 bg-red-50 p-2 rounded border border-dashed border-red-200 editable'
-    : 'md:w-44 italic text-[11px] text-slate-400 bg-slate-50 p-2 rounded border border-dashed border-slate-200 editable';
+    ? 'md:w-44 italic text-xs md:text-sm text-red-400 bg-red-50 p-2 rounded border border-dashed border-red-200 editable'
+    : 'md:w-44 italic text-xs md:text-sm text-slate-400 bg-slate-50 p-2 rounded border border-dashed border-slate-200 editable';
 
   return (
     <div className={`flex rounded-lg border overflow-hidden shadow-sm hover:shadow-md transition-all ${cardClass}`}>
       {/* Left color bar */}
-      <div className={`w-1 shrink-0 ${barColor}`} />
+      <div className={`w-1.5 shrink-0 ${barColor}`} />
 
       {/* Card content */}
-      <div className="flex-1 p-3 flex flex-col md:flex-row md:items-center gap-3">
+      <div className="flex-1 p-3 md:p-4 flex flex-col md:flex-row md:items-center gap-2 md:gap-3">
         {/* Date & Time */}
-        <div className="md:w-24 shrink-0">
+        <div className="md:w-28 shrink-0">
           <div
             ref={dateRef}
             className={dateClass}
@@ -60,7 +60,7 @@ export default function ItineraryCard({ item, index, onUpdate }: ItineraryCardPr
           </div>
           <div
             ref={timeRef}
-            className="text-sm text-slate-500 editable"
+            className="text-sm md:text-base text-slate-500 editable"
             contentEditable
             suppressContentEditableWarning
             onBlur={() => handleBlur('time', timeRef)}
@@ -83,7 +83,7 @@ export default function ItineraryCard({ item, index, onUpdate }: ItineraryCardPr
             </div>
             {item.englishLevel && <EnglishBadge level={item.englishLevel} />}
           </div>
-          <div className="text-[11px] text-slate-500 flex items-center mt-1">
+          <div className="text-xs md:text-sm text-slate-500 flex items-center mt-1">
             <span className="mr-1.5">📍</span>
             <span
               ref={locationRef}
