@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026纽约出差互动手册</title>
+    <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
+    <link rel="stylesheet" href="[https://unpkg.com/leaflet@1.9.4/dist/leaflet.css](https://unpkg.com/leaflet@1.9.4/dist/leaflet.css)" />
+    <script src="[https://unpkg.com/leaflet@1.9.4/dist/leaflet.js](https://unpkg.com/leaflet@1.9.4/dist/leaflet.js)"></script>
+    <link rel="stylesheet" href="[https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap](https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap)">
+    <style>
+        body { font-family: 'Google Sans', sans-serif; background-color: #f8fafc; }
+        #map { height: 450px; width: 100%; border-radius: 12px; z-index: 1; }
+       .editable:focus { outline: 2px solid #3b82f6; background: white; padding: 2px 4px; border-radius: 4px; }
+       .tab-content { display: none; }
+       .tab-content.active { display: block; }
+       .sticky-nav { position: sticky; top: 0; z-index: 50; }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <header class="bg-slate-900 text-white p-6 shadow-lg sticky-nav">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold">纽约商务考察手册 <span class="text-blue-400 text-sm font-normal">2026.04.14 - 04.20</span></h1>
+                <p class="text-slate-400 text-xs">成都代表团专用 | Westhouse Hotel & Triangle Loft</p>
+            </div>
+            <button onclick="saveItinerary()" class="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-lg text-sm transition">保存修改</button>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto p-4 md:p-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <div class="lg:col-span-1 space-y-6">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
+                <h2 class="text-lg font-bold mb-4 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+                    地点索引
+                </h2>
+                <div id="map"></div>
+                <p class="text-xs text-slate-500 mt-2">提示：点击地图图标查看详细地址及备注</p>
+            </div>
+
+            <div class="bg-blue-50 p-5 rounded-xl border border-blue-100">
+                <h3 class="font-bold text-blue-900 mb-2 italic">👗 穿衣建议</h3>
+                <ul class="text-sm text-blue-800 space-y-1">
+                    <li>• 层叠式：轻薄羽绒 + 商务风衣</li>
+                    <li>• 足部：黑色高质感运动鞋 (日行2万步)</li>
+                    <li>• 备品：折叠伞 (应对4月阵雨)</li>
+                </ul>
+                <h3 class="font-bold text-blue-900 mt-4 mb-2 italic">⚠️ 安全提醒</h3>
+                <ul class="text-sm text-blue-800 space-y-1">
+                    <li>• 时代广场：拒绝任何强行合影或CD</li>
+                    <li>• 地铁：深夜避开空车厢，选中间车厢</li>
+                    <li>• 支付：全程使用手机 NFC (OMNY)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="lg:col-span-2 space-y-6">
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="flex border-b border-slate-200">
+                    <button class="px-6 py-4 font-bold text-blue-600 border-b-2 border-blue-600">行程计划表</button>
+                    <button onclick="alert('餐饮清单已集成在地图和建议栏中')" class="px-6 py-4 text-slate-500 hover:bg-slate-50">推荐餐厅</button>
+                </div>
+
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">直接点击下方文字即可编辑行程</span>
+                        <button onclick="resetItinerary()" class="text-xs text-red-500 underline">重置为初始行程</button>
+                    </div>
+
+                    <div id="itinerary-list" class="space-y-4">
+                        </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-orange-50 p-4 rounded-xl border border-orange-100">
+                    <h4 class="font-bold text-orange-900 mb-2">🍽️ 重点餐饮</h4>
+                    <p class="text-xs text-orange-800"><b>Keens Steakhouse</b>: 老牌牛排，需预约</p>
+                    <p class="text-xs text-orange-800 mt-1"><b>Fish Cheeks</b>: 泰式海鲜，适合成都胃</p>
+                    <p class="text-xs text-orange-800 mt-1"><b>川里川外</b>: 39街，乡愁缓冲</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-xl border border-green-100">
+                    <h4 class="font-bold text-green-900 mb-2">🗽 游玩攻略</h4>
+                    <p class="text-xs text-green-800"><b>自由女神</b>: 务必订09:00首班渡轮</p>
+                    <p class="text-xs text-green-800 mt-1"><b>帝国大厦</b>: 21:00后登顶避开人流</p>
+                    <p class="text-xs text-green-800 mt-1"><b>Summit</b>: 全镜面地面，建议穿裤装</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const initialData =;
+
+        // Map Setup
+        const map = L.map('map').setView([40.75, -73.98], 12);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+        const pins =, icon: "blue" },
+            { name: "Triangle Loft (NoHo工作地点)", coords: [40.7271, -73.9939], icon: "red" },
+            { name: "时代广场", coords: [40.7588, -73.9851], icon: "yellow" },
+            { name: "自由女神渡轮口", coords: [40.7033, -74.0170], icon: "green" },
+            { name: "帝国大厦", coords: [40.7484, -73.9857], icon: "purple" },
+            { name: "Chelsea Market (餐饮)", coords: [40.7423, -74.0062], icon: "orange" },
+            { name: "大都会博物馆 (The Met)", coords: [40.7794, -73.9632], icon: "blue" },
+            { name: "Summit One Vanderbilt", coords: [40.7529, -73.9785], icon: "purple" }
+        ];
+
+        pins.forEach(pin => {
+            L.marker(pin.coords).addTo(map).bindPopup(`<b>${pin.name}</b>`);
+        });
+
+        // Itinerary Logic
+        function renderItinerary() {
+            const list = document.getElementById('itinerary-list');
+            const data = JSON.parse(localStorage.getItem('nyc_itinerary')) |
+
+| initialData;
+            list.innerHTML = '';
+            data.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = "p-4 bg-slate-50 rounded-lg border border-slate-100 flex flex-col md:flex-row md:items-center gap-4 hover:bg-white hover:shadow-md transition";
+                div.innerHTML = `
+                    <div class="md:w-24 shrink-0">
+                        <div class="text-xs font-bold text-blue-600 editable" contenteditable="true" onblur="updateItem(${index}, 'date', this.innerText)">${item.date}</div>
+                        <div class="text-sm text-slate-500 editable" contenteditable="true" onblur="updateItem(${index}, 'time', this.innerText)">${item.time}</div>
+                    </div>
+                    <div class="grow">
+                        <div class="font-bold text-slate-800 editable" contenteditable="true" onblur="updateItem(${index}, 'event', this.innerText)">${item.event}</div>
+                        <div class="text-xs text-slate-600 flex items-center mt-1">
+                            <span class="mr-2">📍</span>
+                            <span class="editable" contenteditable="true" onblur="updateItem(${index}, 'location', this.innerText)">${item.location}</span>
+                        </div>
+                    </div>
+                    <div class="md:w-48 italic text-xs text-slate-400 bg-white p-2 rounded border border-dashed border-slate-200 editable" contenteditable="true" onblur="updateItem(${index}, 'note', this.innerText)">
+                        ${item.note}
+                    </div>
+                `;
+                list.appendChild(div);
+            });
+        }
+
+        function updateItem(index, field, value) {
+            const data = JSON.parse(localStorage.getItem('nyc_itinerary')) |
+
+| initialData;
+            data[index][field] = value;
+            localStorage.setItem('nyc_itinerary', JSON.stringify(data));
+        }
+
+        function saveItinerary() {
+            alert('行程已成功保存！');
+        }
+
+        function resetItinerary() {
+            if(confirm('确定要重置行程吗？所有自定义修改将丢失。')) {
+                localStorage.removeItem('nyc_itinerary');
+                renderItinerary();
+            }
+        }
+
+        window.onload = renderItinerary;
+    </script>
+</body>
+</html>
