@@ -10,7 +10,7 @@ export default function Header({ onSave }: HeaderProps) {
           <h1 className="text-2xl font-bold">
             纽约商务考察手册{' '}
             <span className="text-blue-400 text-sm font-normal">
-              2026.04.14 - 04.20
+              2026.04.15 - 04.20
             </span>
           </h1>
           <p className="text-slate-400 text-xs">

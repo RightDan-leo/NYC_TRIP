@@ -4,6 +4,7 @@ import EnglishBadge from './EnglishBadge';
 
 export default function AttractionCard({ attraction }: { attraction: Attraction }) {
   const [expanded, setExpanded] = useState(false);
+  const [imgError, setImgError] = useState(false);
 
   return (
     <div
@@ -26,6 +27,19 @@ export default function AttractionCard({ attraction }: { attraction: Attraction 
       {/* Expandable detail */}
       {expanded && (
         <div className="px-4 pb-4 border-t border-indigo-50">
+          {/* Photo */}
+          {!imgError && (
+            <div className="mt-3 rounded-lg overflow-hidden">
+              <img
+                src={`${import.meta.env.BASE_URL}${attraction.image.replace(/^\//, '')}`}
+                alt={attraction.name}
+                className="w-full h-40 object-cover rounded-lg"
+                loading="lazy"
+                onError={() => setImgError(true)}
+              />
+            </div>
+          )}
+
           {/* Description */}
           <p className="text-xs text-slate-600 leading-relaxed mt-3">{attraction.description}</p>
 

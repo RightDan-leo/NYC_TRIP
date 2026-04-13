@@ -13,30 +13,22 @@ export interface WeatherDay {
 
 export const weatherData: WeatherDay[] = [
   {
-    date: "04/14",
-    dayLabel: "周二 · 到达日",
-    icon: "🌦️",
-    high: 27, low: 15, highF: 81, lowF: 59,
-    condition: "小雨转多云",
-    clothing: "薄外套 + 雨伞",
-    warning: "到达日偏热，注意随身带伞"
-  },
-  {
     date: "04/15",
-    dayLabel: "周三 · 文化探索日",
+    dayLabel: "周三 · 到达日（夜间）",
     icon: "🌦️",
     high: 28, low: 17, highF: 82, lowF: 63,
     condition: "小雨转多云",
     clothing: "短袖 + 薄外套备用",
-    warning: "本周最热的一天 🔥"
+    warning: "本周最热的一天 🔥 落地已是夜间，注意温差"
   },
   {
     date: "04/16",
-    dayLabel: "周四 · 经典纽约日",
+    dayLabel: "周四 · 全天自由日 ⭐",
     icon: "☁️",
     high: 26, low: 17, highF: 78, lowF: 63,
     condition: "多云",
-    clothing: "短袖 + 轻薄外套"
+    clothing: "短袖 + 轻薄外套",
+    warning: "最重要的一天！穿舒适运动鞋"
   },
   {
     date: "04/17",
@@ -58,7 +50,7 @@ export const weatherData: WeatherDay[] = [
   },
   {
     date: "04/19",
-    dayLabel: "周日 · 工作日",
+    dayLabel: "周日 · 工作 + 最后一晚",
     icon: "🌦️",
     high: 22, low: 3, highF: 72, lowF: 38,
     condition: "小雨转晴",
