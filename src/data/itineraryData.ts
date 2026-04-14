@@ -43,7 +43,7 @@ export const initialItinerary: ItineraryItem[] = [
     englishLevel: "basic"
   },
 
-  // ── 04/16 周四（全天自由日 · 最重要的一天！）──────────────
+  // ── 04/16 周四（自由日 + 下午踩点工作）──────────────────────
   {
     date: "04/16 周四",
     time: "08:30",
@@ -63,7 +63,7 @@ export const initialItinerary: ItineraryItem[] = [
   },
   {
     date: "04/16 周四",
-    time: "12:00",
+    time: "11:30",
     event: "🐂 华尔街 & 铜牛打卡",
     location: "Wall St / Charging Bull, Broadway",
     note: "步行即达，摸牛鼻=好运，拍照5-10分钟",
@@ -72,7 +72,7 @@ export const initialItinerary: ItineraryItem[] = [
   },
   {
     date: "04/16 周四",
-    time: "12:30",
+    time: "12:00",
     event: "🥟 中国城午餐 @ Joe's Shanghai",
     location: "Joe's Shanghai, 46 Bowery",
     note: "全中文环境！蟹粉小笼包纽约第一",
@@ -81,16 +81,31 @@ export const initialItinerary: ItineraryItem[] = [
   },
   {
     date: "04/16 周四",
-    time: "14:00",
+    time: "13:15",
+    event: "🚶 前往踩点地点",
+    location: "中国城 → 419 Lafayette St（步行约10分钟）",
+    note: "从中国城步行前往NoHo，提前到达准备",
+    englishLevel: "none"
+  },
+  {
+    date: "04/16 周四",
+    time: "14:00-16:00",
+    event: "【工作】万龙觉醒见面会场踩点",
+    location: "419 Lafayette St. Flr. 7, New York, NY 10003",
+    note: "场地考察，确认18号见面会布置方案"
+  },
+  {
+    date: "04/16 周四",
+    time: "16:15",
     event: "🌉 布鲁克林大桥步行 → DUMBO",
     location: "Brooklyn Bridge, City Hall 侧",
-    note: "步行30分钟至DUMBO，Washington St经典机位",
+    note: "从踩点地点步行10分钟到桥头，30分钟走到DUMBO",
     englishLevel: "none",
     attractionId: "brooklyn_bridge"
   },
   {
     date: "04/16 周四",
-    time: "15:00",
+    time: "17:00",
     event: "📸 DUMBO 拍照 + Jacques Torres",
     location: "Washington St, DUMBO, Brooklyn",
     note: "经典「桥下曼哈顿」角度，热巧克力必喝",
@@ -99,25 +114,25 @@ export const initialItinerary: ItineraryItem[] = [
   },
   {
     date: "04/16 周四",
-    time: "16:00",
+    time: "17:45",
     event: "🍽️ Chelsea Market 美食 + High Line",
     location: "Chelsea Market, 75 9th Ave",
-    note: "坐地铁F线回曼哈顿，Los Tacos No.1 必吃，楼上直通High Line",
+    note: "地铁F线至14St，Los Tacos No.1 必吃，楼上直通High Line",
     englishLevel: "basic",
     attractionId: "chelsea_market"
   },
   {
     date: "04/16 周四",
-    time: "17:30",
-    event: "🌿 High Line 空中花园散步",
+    time: "18:30",
+    event: "🌿 High Line 空中花园散步（日落时分）",
     location: "The High Line, 从Chelsea Market旁入口上",
-    note: "废弃铁路改造的空中步道，城市天际线绝佳",
+    note: "傍晚散步正好欣赏日落+城市天际线",
     englishLevel: "none",
     attractionId: "high_line"
   },
   {
     date: "04/16 周四",
-    time: "19:00",
+    time: "19:30",
     event: "🌶️ 晚餐 @ 麻辣项目 MáLà Project",
     location: "122 1st Ave, East Village",
     note: "麻辣干锅自选食材+辣度，中文服务，人均$20-30",

@@ -4,7 +4,7 @@ import { initialItinerary, type ItineraryItem } from '../data/itineraryData';
 const STORAGE_KEY = 'nyc_itinerary';
 const VERSION_KEY = 'nyc_itinerary_version';
 // Bump this whenever the itinerary data changes significantly
-const CURRENT_VERSION = '2026-04-15-v2';
+const CURRENT_VERSION = '2026-04-16-v3';
 
 function loadFromStorage(): ItineraryItem[] {
   try {

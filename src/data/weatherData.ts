@@ -23,7 +23,7 @@ export const weatherData: WeatherDay[] = [
   },
   {
     date: "04/16",
-    dayLabel: "周四 · 全天自由日 ⭐",
+    dayLabel: "周四 · 自由日 + 下午踩点",
     icon: "☁️",
     high: 26, low: 17, highF: 78, lowF: 63,
     condition: "多云",
