@@ -16,8 +16,8 @@ export default function DaySection({ dateKey, items, weather, onUpdate }: DaySec
   // Build a theme label from the date
   const dayThemes: Record<string, string> = {
     '04/15': '到达日（夜间）',
-    '04/16': '自由日 + 下午踩点工作',
-    '04/17': '工作 + 晚间自由',
+    '04/16': '全天自由日 ⭐',
+    '04/17': '工作 + 踩点 + 晚间自由',
     '04/18': '上午自由 + 傍晚工作',
     '04/19': '工作 + 最后一晚',
     '04/20': '返程日',

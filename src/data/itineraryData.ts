@@ -43,7 +43,7 @@ export const initialItinerary: ItineraryItem[] = [
     englishLevel: "basic"
   },
 
-  // ── 04/16 周四（自由日 + 下午踩点工作）──────────────────────
+  // ── 04/16 周四（全天自由日 ⭐）──────────────────────────
   {
     date: "04/16 周四",
     time: "08:30",
@@ -63,7 +63,7 @@ export const initialItinerary: ItineraryItem[] = [
   },
   {
     date: "04/16 周四",
-    time: "11:30",
+    time: "12:00",
     event: "🐂 华尔街 & 铜牛打卡",
     location: "Wall St / Charging Bull, Broadway",
     note: "步行即达，摸牛鼻=好运，拍照5-10分钟",
@@ -72,7 +72,7 @@ export const initialItinerary: ItineraryItem[] = [
   },
   {
     date: "04/16 周四",
-    time: "12:00",
+    time: "12:30",
     event: "🥟 中国城午餐 @ Joe's Shanghai",
     location: "Joe's Shanghai, 46 Bowery",
     note: "全中文环境！蟹粉小笼包纽约第一",
@@ -81,31 +81,16 @@ export const initialItinerary: ItineraryItem[] = [
   },
   {
     date: "04/16 周四",
-    time: "13:15",
-    event: "🚶 前往踩点地点",
-    location: "中国城 → 419 Lafayette St（步行约10分钟）",
-    note: "从中国城步行前往NoHo，提前到达准备",
-    englishLevel: "none"
-  },
-  {
-    date: "04/16 周四",
-    time: "14:00-16:00",
-    event: "【工作】万龙觉醒见面会场踩点",
-    location: "419 Lafayette St. Flr. 7, New York, NY 10003",
-    note: "场地考察，确认18号见面会布置方案"
-  },
-  {
-    date: "04/16 周四",
-    time: "16:15",
+    time: "14:00",
     event: "🌉 布鲁克林大桥步行 → DUMBO",
     location: "Brooklyn Bridge, City Hall 侧",
-    note: "从踩点地点步行10分钟到桥头，30分钟走到DUMBO",
+    note: "步行30分钟至DUMBO，Washington St经典机位",
     englishLevel: "none",
     attractionId: "brooklyn_bridge"
   },
   {
     date: "04/16 周四",
-    time: "17:00",
+    time: "15:00",
     event: "📸 DUMBO 拍照 + Jacques Torres",
     location: "Washington St, DUMBO, Brooklyn",
     note: "经典「桥下曼哈顿」角度，热巧克力必喝",
@@ -114,25 +99,25 @@ export const initialItinerary: ItineraryItem[] = [
   },
   {
     date: "04/16 周四",
-    time: "17:45",
+    time: "16:00",
     event: "🍽️ Chelsea Market 美食 + High Line",
     location: "Chelsea Market, 75 9th Ave",
-    note: "地铁F线至14St，Los Tacos No.1 必吃，楼上直通High Line",
+    note: "坐地铁F线回曼哈顿，Los Tacos No.1 必吃，楼上直通High Line",
     englishLevel: "basic",
     attractionId: "chelsea_market"
   },
   {
     date: "04/16 周四",
-    time: "18:30",
-    event: "🌿 High Line 空中花园散步（日落时分）",
+    time: "17:30",
+    event: "🌿 High Line 空中花园散步",
     location: "The High Line, 从Chelsea Market旁入口上",
-    note: "傍晚散步正好欣赏日落+城市天际线",
+    note: "废弃铁路改造的空中步道，城市天际线绝佳",
     englishLevel: "none",
     attractionId: "high_line"
   },
   {
     date: "04/16 周四",
-    time: "19:30",
+    time: "19:00",
     event: "🌶️ 晚餐 @ 麻辣项目 MáLà Project",
     location: "122 1st Ave, East Village",
     note: "麻辣干锅自选食材+辣度，中文服务，人均$20-30",
@@ -148,7 +133,7 @@ export const initialItinerary: ItineraryItem[] = [
     attractionId: "empire_state"
   },
 
-  // ── 04/17 周五（工作日 + 晚间自由）──────────────────────
+  // ── 04/17 周五（工作日 + 踩点 + 晚间自由）─────────────────
   {
     date: "04/17 周五",
     time: "09:00-17:00",
@@ -158,16 +143,23 @@ export const initialItinerary: ItineraryItem[] = [
   },
   {
     date: "04/17 周五",
-    time: "18:00",
+    time: "17:00-19:00",
+    event: "【工作】万龙觉醒见面会场踩点",
+    location: "419 Lafayette St. Flr. 7, New York, NY 10003",
+    note: "从430 Park Ave地铁6线至Astor Place（约15min），场地考察+确认18号布置方案"
+  },
+  {
+    date: "04/17 周五",
+    time: "19:15",
     event: "✨ 时代广场 (Times Square)",
     location: "Broadway & 7th Ave, 42-47th St",
-    note: "纽约必到！巨幅LED屏+TKTS红阶梯拍照",
+    note: "夜晚的时代广场更震撼！巨幅LED屏+TKTS红阶梯拍照",
     englishLevel: "none",
     attractionId: "times_square"
   },
   {
     date: "04/17 周五",
-    time: "18:30",
+    time: "19:45",
     event: "🍫 M&M's World / Hershey's",
     location: "1600 Broadway, Times Square",
     note: "三层巧克力天堂，可定制照片M&M，买伴手礼",
@@ -176,10 +168,10 @@ export const initialItinerary: ItineraryItem[] = [
   },
   {
     date: "04/17 周五",
-    time: "19:30",
+    time: "20:30",
     event: "🌶️ 川菜晚餐 @ 川里川外",
     location: "川里川外, 39th St",
-    note: "全中文服务，正宗成都味，犒劳工作一天",
+    note: "全中文服务，正宗成都味，犒劳辛苦一天",
     englishLevel: "none"
   },
 
